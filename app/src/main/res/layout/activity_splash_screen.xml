@@ -12,6 +12,7 @@
         android:layout_height="250dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:backgroundTint="#FFFFFF" />
+        android:backgroundTint="#FFFFFF"
+        android:src="@drawable/kastrad"/>
 
 </RelativeLayout>
