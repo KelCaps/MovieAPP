@@ -9,6 +9,9 @@ import android.os.Handler;
 import android.os.Looper;
 import android.view.Window;
 
+import com.example.movieapp.MainActivity;
+import com.example.movieapp.R;
+
 public class SplashScreen extends AppCompatActivity {
 
     @Override

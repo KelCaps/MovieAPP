@@ -13,6 +13,6 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:backgroundTint="#FFFFFF"
-        android:src="@drawable/kastrad"/>
+        android:src="@drawable/logoss"/>
 
 </RelativeLayout>
