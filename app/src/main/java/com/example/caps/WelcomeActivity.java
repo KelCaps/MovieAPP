@@ -1,5 +1,4 @@
-package com.example.movieapp;
-
+package com.example.caps;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.PagerAdapter;
@@ -35,7 +34,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         // mengecek lauch activity - sebelum memanggil setContentView()
         prefManager = new PrefManager(this);
-        if (!prefManager.isFirstTimeLaunch()) {
+        if (prefManager.isFirstTimeLaunch()) {
             launchHomeScreen();
             finish();
         }

@@ -1,5 +1,4 @@
-package com.example.movieapp;
-
+package com.example.caps;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Activity;
@@ -8,9 +7,6 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.Window;
-
-import com.example.movieapp.MainActivity;
-import com.example.movieapp.R;
 
 public class SplashScreen extends AppCompatActivity {
 

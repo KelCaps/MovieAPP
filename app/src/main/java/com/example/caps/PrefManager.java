@@ -1,8 +1,7 @@
-package com.example.movieapp;
+package com.example.caps;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 
 public class PrefManager {
     SharedPreferences pref;
@@ -29,6 +28,8 @@ public class PrefManager {
     }
 
     public boolean isFirstTimeLaunch() {
-        return pref.getBoolean(IS_FIRST_TIME_LAUNCH, true);
+        return pref.getBoolean(IS_FIRST_TIME_LAUNCH, false);
     }
 }
+
+
