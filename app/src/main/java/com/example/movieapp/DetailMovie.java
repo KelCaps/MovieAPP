@@ -2,7 +2,9 @@ package com.example.movieapp;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -11,12 +13,15 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.movieapp.model.ResultsItem;
 import com.example.movieapp.rest.ApiService;
+import com.github.ivbaranov.mfb.MaterialFavoriteButton;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 public class DetailMovie extends AppCompatActivity {
     Toolbar toolbar;
@@ -31,6 +36,9 @@ public class DetailMovie extends AppCompatActivity {
     int Id;
     public static String detail_key = "detailMovie";
     FloatingActionButton fabShare;
+    private RecyclerView recyclerView;
+    private ResultsItem favorite;
+    private final AppCompatActivity activity = DetailMovie.this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +114,39 @@ public class DetailMovie extends AppCompatActivity {
             }
         });
 
+        MaterialFavoriteButton materialFavoriteButtonNice =
+                (MaterialFavoriteButton) findViewById(R.id.imgFavorite);
+
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        materialFavoriteButtonNice.setOnFavoriteChangeListener(
+                new MaterialFavoriteButton.OnFavoriteChangeListener(){
+                    @Override
+                    public void onFavoriteChanged(MaterialFavoriteButton buttonView, boolean favorite){
+                        if (favorite){
+                            SharedPreferences.Editor editor = getSharedPreferences("com.delaroystudios.movieapp.DetailActivity", MODE_PRIVATE).edit();
+                            editor.putBoolean("Favorite Added", true);
+                            editor.commit();
+                            saveFavorite();
+                            Snackbar.make(buttonView, "Added to Favorite",
+                                    Snackbar.LENGTH_SHORT).show();
+                        }else{
+                            int movie_id = getIntent().getExtras().getInt("id");
+                            FavoriteDbHelper favoriteDbHelper = new FavoriteDbHelper(DetailMovie.this);
+                            favoriteDbHelper.deleteFavorite(movie_id);
+
+                            SharedPreferences.Editor editor = getSharedPreferences("com.delaroystudios.movieapp.DetailActivity", MODE_PRIVATE).edit();
+                            editor.putBoolean("Favorite Removed", true);
+                            editor.commit();
+                            Snackbar.make(buttonView, "Removed from Favorite",
+                                    Snackbar.LENGTH_SHORT).show();
+                        }
+
+                    }
+                }
+        );
+
+
     }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -116,4 +157,18 @@ public class DetailMovie extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+
+    public void saveFavorite(){
+        FavoriteDbHelper favoriteDbHelper = new FavoriteDbHelper(activity);
+        favorite = new ResultsItem();
+
+        Double rate = resultsItem.getVoteAverage();
+
+        favorite.setOriginalTitle(NameFilm);
+        favorite.setPosterPath(Thumbnail);
+        favorite.setVoteAverage(rate);
+        favorite.setOverview(Overview);
+
+        favoriteDbHelper.addFavorite(favorite);
+    }
 }
