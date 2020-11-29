@@ -4,15 +4,19 @@
     android:id="@+id/splash_screen"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8B195"
+    android:background="#616161"
     tools:context=".SplashScreen">
 
     <ImageView
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:backgroundTint="#F8B195"
-        android:src="@drawable/logoss" />
+        android:layout_width="302dp"
+        android:layout_height="359dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="178dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginRight="54dp"
+        android:src="@drawable/moviem" />
 
 </RelativeLayout>

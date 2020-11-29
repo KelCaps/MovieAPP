@@ -35,7 +35,7 @@ public class WelcomeActivity extends AppCompatActivity {
 
         // mengecek lauch activity - sebelum memanggil setContentView()
         prefManager = new PrefManager(this);
-        if (!prefManager.isFirstTimeLaunch()) {
+        if (prefManager.isFirstTimeLaunch()) {
             launchHomeScreen();
             finish();
         }
@@ -45,7 +45,8 @@ public class WelcomeActivity extends AppCompatActivity {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_STABLE | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
             getWindow().setStatusBarColor(Color.TRANSPARENT);
         } else {
-            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN); }
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
+        }
 
 
         setContentView(R.layout.activity_welcome);
@@ -54,13 +55,12 @@ public class WelcomeActivity extends AppCompatActivity {
         btnSkip = (Button) findViewById(R.id.btn_skip);
         btnNext = (Button) findViewById(R.id.btn_next);
 
-        // layout xml slide 1 sampai 4
+        // layout xml slide 1 sampai 3
         // add few more layouts if you want
         layouts = new int[]{
                 R.layout.slide1,
                 R.layout.slide2,
-                R.layout.slide3,
-                R.layout.slide4};
+                R.layout.slide3};
 
         // tombol dots (lingkaran kecil perpindahan slide)
         addBottomDots(0);
@@ -82,7 +82,7 @@ public class WelcomeActivity extends AppCompatActivity {
         btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // mengecek page terakhir (slide 4)
+                // mengecek page terakhir (slide 3)
                 // jika activity home sudah tampil
                 int current = getItem(+1);
                 if (current < layouts.length) {
