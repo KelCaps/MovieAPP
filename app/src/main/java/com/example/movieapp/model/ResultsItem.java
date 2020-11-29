@@ -121,6 +121,9 @@ public class ResultsItem implements Parcelable {
             dest.writeInt(voteCount);
         }
     }
+    public ResultsItem(){
+
+    }
 
     @Override
     public int describeContents() {
