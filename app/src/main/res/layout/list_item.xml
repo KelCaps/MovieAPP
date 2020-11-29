@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="bottom"
+            android:orientation="vertical"
+            android:paddingStart="5dp"
+            android:paddingEnd="5dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_klik"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardElevation="16dp"
+                app:cardCornerRadius="3dp">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:layout_marginStart="105dp"
+                    android:layout_marginLeft="105dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginBottom="6dp"
+                            android:text="@string/judul_movie"
+                            android:id="@+id/movie_title"
+                            android:textColor="@android:color/white"
+                            android:textSize="18dp"
+                            android:fontFamily="sans-serif"
+                            android:textStyle="bold"/>
+
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:layout_marginTop="6dp"
+                            android:layout_marginBottom="6dp"
+                            android:text="@string/overview"
+                            android:id="@+id/movie_overview"
+                            android:textColor="@android:color/white"
+                            android:textSize="18dp"
+                            android:fontFamily="sans-serif"
+                            android:textStyle="bold"/>
+
+                        <RatingBar
+                            android:id="@+id/ratingBar"
+                            style="@style/Widget.AppCompat.RatingBar.Small"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:progressTint="@color/colorRating" />
+                    </LinearLayout>
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/movieRealeseDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginBottom="10dp"
+                    android:backgroundTint="@color/colorAccent"
+                    android:padding="5dp"
+                    android:textColor="@android:color/white"
+                    android:textSize="8sp"
+                    android:textStyle="bold" />
+
+            </androidx.cardview.widget.CardView>
+
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start|center"
+            android:layout_marginBottom="10dp"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/iv"
+                android:layout_width="90dp"
+                android:layout_height="140dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="10dp"
+                android:scaleType="fitCenter"
+                android:layout_marginRight="10dp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</LinearLayout>
