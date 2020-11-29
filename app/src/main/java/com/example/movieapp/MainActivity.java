@@ -70,7 +70,17 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
+        imgNotification = findViewById(R.id.imgNotification);
+        imgNotification.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, SettingActivity.class);
+                startActivity(intent);
+            }
+        });
+
     }
+
 
     private void getData() {
         ApiService apiService = ApiConfigServer.getApiService();
