@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.movieapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -11,6 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SettingActivity"></activity>
         <activity android:name=".DetailMovie" />
         <activity android:name=".FragmentFavorite" />
         <activity android:name=".FragmentAbout" />
@@ -22,8 +24,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WelcomeActivity"/>
+        <activity android:name=".WelcomeActivity" />
         <activity android:name=".MainActivity" />
+
+        <receiver
+            android:name=".notification.NotificationReleaseReceiver"
+            android:enabled="true"
+            android:exported="true"
+            tools:ignore="ExportedReceiver" />
+        <receiver
+            android:name=".notification.NotificationDailyReceiver"
+            android:enabled="true"
+            android:exported="true"
+            tools:ignore="ExportedReceiver" />
     </application>
 
 </manifest>

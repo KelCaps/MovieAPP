@@ -8,12 +8,13 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <include layout="@layout/toolbar_main" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv"
-        android:scrollbars="vertical"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"/>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -24,33 +25,5 @@
         app:itemIconTint="@drawable/selector"
         app:itemTextColor="@drawable/selector"
         app:menu="@menu/menu_navigation" />
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="@color/colorPrimaryDark">
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:text="Halo,\nNONTON APA HARI INI?"
-            android:textColor="@android:color/white"
-            android:textStyle="bold"
-            android:textSize="16sp" />
-
-        <ImageView
-            android:id="@+id/imgNotification"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="-60dp"
-            android:padding="15dp"
-            android:src="@drawable/ic_notification"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="-60dp" />
-
-    </androidx.appcompat.widget.Toolbar>
 
 </RelativeLayout>

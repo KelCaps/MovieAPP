@@ -1,7 +1,9 @@
 package com.example.movieapp;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
@@ -14,6 +16,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.movieapp.model.ResultsItem;
 import com.example.movieapp.rest.ApiService;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class DetailMovie extends AppCompatActivity {
     Toolbar toolbar;
@@ -27,6 +30,7 @@ public class DetailMovie extends AppCompatActivity {
     ProgressDialog progressDialog;
     int Id;
     public static String detail_key = "detailMovie";
+    FloatingActionButton fabShare;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +64,8 @@ public class DetailMovie extends AppCompatActivity {
             Thumbnail = resultsItem.getPosterPath();
             Overview = resultsItem.getOverview();
             Rating = resultsItem.getVoteAverage();
+            movieURL = ApiService.URLFILM + "" + Id;
+
 
             tvName.setText(NameFilm);
             movie_title.setText(NameFilm);
@@ -67,6 +73,7 @@ public class DetailMovie extends AppCompatActivity {
             movie_title.setSelected(true);
             tvName.setSelected(true);
             tvRating.setText(Rating + "/10");
+            fabShare = findViewById(R.id.fab);
 
             float newValue = (float) Rating;
 
@@ -86,6 +93,27 @@ public class DetailMovie extends AppCompatActivity {
                     .into(iv);
 
         }
+        fabShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent shareIntent = new Intent(Intent.ACTION_SEND);
+                shareIntent.setType("text/plain");
+                String subject = resultsItem.getTitle();
+                String description = resultsItem.getOverview();
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, subject);
+                shareIntent.putExtra(Intent.EXTRA_TEXT, subject + "\n\n" + description + "\n\n" + movieURL);
+                startActivity(Intent.createChooser(shareIntent, "Bagikan dengan :"));
+            }
+        });
 
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            this.finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
